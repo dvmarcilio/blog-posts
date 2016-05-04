@@ -52,7 +52,7 @@ public class ConfigurationsPropertiesValidator
 		Integer intVal = tryToParseIntValue(configKey, value);
 		if (intVal <= 0) {
 			throw new RuntimeException("The key " + configKey
-					+ " should have a value greater than zero. ");
+					+ " should have a value greater than zero.");
 		}
 	}
 
@@ -61,14 +61,14 @@ public class ConfigurationsPropertiesValidator
 			return Integer.parseInt(value);
 		} catch (NumberFormatException e) {
 			throw new RuntimeException(
-					"The key " + configKey + " should have an integer value. ");
+					"The key " + configKey + " should have an integer value.");
 		}
 	}
 
 	private void validateBooleanValue(Configuration configKey, String value) {
 		if (!isStringValidBoolean(value)) {
 			throw new RuntimeException("The key " + configKey
-					+ " should have 'true' or 'false' as value. ");
+					+ " should have 'true' or 'false' as value.");
 		}
 	}
 
