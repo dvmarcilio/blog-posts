@@ -45,7 +45,7 @@ public class ConfigurationsPropertiesValidator
 			String value) {
 		if (value.isEmpty())
 			throw new RuntimeException(
-					"The key " + configKey + "should not have an empty value.");
+					"The key " + configKey + " should not have an empty value.");
 	}
 
 	private void validateIntValue(Configuration configKey, String value) {
@@ -68,7 +68,7 @@ public class ConfigurationsPropertiesValidator
 	private void validateBooleanValue(Configuration configKey, String value) {
 		if (!isStringValidBoolean(value)) {
 			throw new RuntimeException("The key " + configKey
-					+ " should have 'false' or 'true' as value. ");
+					+ " should have 'true' or 'false' as value. ");
 		}
 	}
 
