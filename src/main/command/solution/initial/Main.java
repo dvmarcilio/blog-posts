@@ -1,4 +1,4 @@
-package command.initial;
+package command.solution.initial;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

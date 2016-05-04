@@ -1,4 +1,4 @@
-package command;
+package command.solution;
 
 import static org.junit.Assert.*;
 
@@ -9,8 +9,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import command.common.ConfigPropertiesValidator;
-import command.initial.Configuration;
-import command.initial.ConfigurationsPropertiesValidator;
+import command.common.PropertiesTestDataHelper;
+import command.solution.initial.Configuration;
+import command.solution.initial.ConfigurationsPropertiesValidator;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import junitparams.naming.TestCaseName;

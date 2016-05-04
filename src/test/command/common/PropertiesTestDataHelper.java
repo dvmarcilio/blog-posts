@@ -1,4 +1,4 @@
-package command;
+package command.common;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import command.initial.Configuration;
+import command.solution.initial.Configuration;
 
 public class PropertiesTestDataHelper {
 
