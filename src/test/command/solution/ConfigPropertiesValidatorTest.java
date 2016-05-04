@@ -6,20 +6,18 @@ import java.util.Properties;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import command.common.ConfigPropertiesValidator;
 import command.common.PropertiesTestDataHelper;
 import command.solution.initial.Configuration;
-import command.solution.initial.ConfigurationsPropertiesValidator;
-import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import junitparams.naming.TestCaseName;
 
-@RunWith(JUnitParamsRunner.class)
-public class ConfigPropertiesValidatorTest {
+public abstract class ConfigPropertiesValidatorTest {
+	
+	protected abstract ConfigPropertiesValidator createValidatorInstance();
 
-	private ConfigPropertiesValidator validator = new ConfigurationsPropertiesValidator();
+	private ConfigPropertiesValidator validator = createValidatorInstance();
 
 	private Properties properties;
 
@@ -74,7 +72,7 @@ public class ConfigPropertiesValidatorTest {
 
 	private String getNotAnIntegerMessage() {
 		return "The key " + Configuration.TASKS_RETRY_INTERVAL
-				+ " should have an integer value. ";
+				+ " should have an integer value.";
 	}
 
 	@Test
@@ -96,7 +94,7 @@ public class ConfigPropertiesValidatorTest {
 
 	private String getIntegerNotGreaterThanZeroMessage() {
 		return "The key " + Configuration.TASKS_RETRY_INTERVAL
-				+ " should have a value greater than zero. ";
+				+ " should have a value greater than zero.";
 	}
 
 	@Test
@@ -135,7 +133,7 @@ public class ConfigPropertiesValidatorTest {
 
 	private String getShouldBeTrueOrFalseMessage() {
 		return "The key " + Configuration.LOG_LOGIN_FAILS
-				+ " should have 'true' or 'false' as value. ";
+				+ " should have 'true' or 'false' as value.";
 	}
 
 }
