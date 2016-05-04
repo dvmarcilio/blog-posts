@@ -1,28 +1,17 @@
 package command.initial;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collection;
 import java.util.Properties;
 
-public class ConfigurationsValidator {
+import command.common.ConfigPropertiesValidator;
 
-	private static final String PROPERTIES_FILE_NAME = "config.properties";
+public class ConfigurationsPropertiesValidator
+		implements ConfigPropertiesValidator {
+	
+	private Properties properties;
 
-	private Properties properties = new Properties();
-
-	public ConfigurationsValidator() throws IOException {
-		loadProperties();
-	}
-
-	private void loadProperties() throws FileNotFoundException, IOException {
-		InputStream is = ConfigurationsValidator.class
-				.getResourceAsStream(PROPERTIES_FILE_NAME);
-		properties.load(is);
-	}
-
-	public void validateConfigs() {
+	public void validate(Properties properties) {
+		this.properties = properties;
 		Collection<Configuration> configs = Configuration.getAll();
 		for (Configuration config : configs)
 			validateConfig(config);
