@@ -1,17 +1,11 @@
 package command.solution.refactored;
 
-public class IntConfigValueValidator implements ConfigValueValidator {
+public class IntConfigValueValidator extends ConfigValueValidator {
 
 	@Override
-	public void validate(String value) throws RuntimeException {
-		validateIfValueIsNotEmpty(value);
+	public void doValidate(String value) throws RuntimeException {
 		validateIfIsAnInt(value);
 		validateIfValueIsGreaterThanZero(value);
-	}
-
-	private void validateIfValueIsNotEmpty(String value) {
-		if (value.isEmpty())
-			throw new RuntimeException("should not have an empty value.");
 	}
 
 	private void validateIfIsAnInt(String value) {

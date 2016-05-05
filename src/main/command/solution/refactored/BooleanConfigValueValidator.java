@@ -1,16 +1,9 @@
 package command.solution.refactored;
 
-public class BooleanConfigValueValidator implements ConfigValueValidator {
+public class BooleanConfigValueValidator extends ConfigValueValidator {
 
-	@Override
-	public void validate(String value) throws RuntimeException {
-		validateIfValueIsNotEmpty(value);
+	public void doValidate(String value) throws RuntimeException {
 		validateIfValidBoolean(value);
-	}
-
-	private void validateIfValueIsNotEmpty(String value) {
-		if (value.isEmpty())
-			throw new RuntimeException("should not have an empty value.");
 	}
 
 	private void validateIfValidBoolean(String value) {

@@ -1,15 +1,10 @@
 package command.solution.refactored;
 
-public class StringValueValidator implements ConfigValueValidator {
+public class StringValueValidator extends ConfigValueValidator {
 
 	@Override
-	public void validate(String value) throws RuntimeException {
-		validateIfValueIsNotEmpty(value);
-	}
+	public void doValidate(String value) throws RuntimeException {
 
-	private void validateIfValueIsNotEmpty(String value) {
-		if (value.isEmpty())
-			throw new RuntimeException("should not have an empty value.");
 	}
 
 }

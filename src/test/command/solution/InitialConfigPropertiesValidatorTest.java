@@ -7,7 +7,8 @@ import command.solution.initial.ConfigurationsPropertiesValidator;
 import junitparams.JUnitParamsRunner;
 
 @RunWith(JUnitParamsRunner.class)
-public class InitialConfigPropertiesValidatorTest extends ConfigPropertiesValidatorTest {
+public class InitialConfigPropertiesValidatorTest
+		extends ConfigPropertiesValidatorTest {
 
 	@Override
 	protected ConfigPropertiesValidator createValidatorInstance() {
