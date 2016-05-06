@@ -14,7 +14,7 @@ import junitparams.Parameters;
 import junitparams.naming.TestCaseName;
 
 public abstract class ConfigPropertiesValidatorTest {
-	
+
 	protected abstract ConfigPropertiesValidator createValidatorInstance();
 
 	private ConfigPropertiesValidator validator = createValidatorInstance();
@@ -33,7 +33,8 @@ public abstract class ConfigPropertiesValidatorTest {
 		try {
 			validator.validate(properties);
 		} catch (Throwable e) {
-			fail("Should not throw exception with valid values");
+			fail("Should not throw exception with all keys added. Keys present: "
+					+ PropertiesTestDataHelper.configurationsAdded());
 		}
 	}
 

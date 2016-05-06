@@ -1,28 +1,51 @@
 package command.common;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import command.solution.initial.Configuration;
+import command.solution.refactored.RefactoredConfiguration;
 
+/**
+ * Only add {@link Configuration}s to the Properties returned. This will work as
+ * long as {@link RefactoredConfiguration}'s enum values are the same as the
+ * enum values from {@link Configuration}. For every {@link Configuration} add
+ * one to {@link RefactoredConfiguration} with the same name.That's because the
+ * Properties' key lookup is made by the name of the enum.
+ *
+ */
 public class PropertiesTestDataHelper {
 
-	private static final String LOG_VALID_VALUE = "false";
-	private static final String TASKS_VALID_VALUE = "3";
-	private static final String INSTITUTION_VALID_VALUE = "inst";
+	private static final String BOOLEAN_VALID_VALUE = "false";
+	private static final String INT_VALID_VALUE = "3";
+	private static final String STRING_VALID_VALUE = "string";
 
 	public static Properties getValid() {
 		Properties properties = new Properties();
-		properties.setProperty(Configuration.INSTITUTION_NAME.toString(),
-				INSTITUTION_VALID_VALUE);
-		properties.setProperty(Configuration.TASKS_RETRY_INTERVAL.toString(),
-				TASKS_VALID_VALUE);
-		properties.setProperty(Configuration.LOG_LOGIN_FAILS.toString(),
-				LOG_VALID_VALUE);
+		Map<Configuration, String> configsToValue = configurationsValuesToBeAdded();
+		for (Map.Entry<Configuration, String> configToValue : configsToValue
+				.entrySet())
+			properties.setProperty(configToValue.getKey().toString(),
+					configToValue.getValue());
 		return properties;
+	}
+
+	// XXX If you add a key, add it to the map.
+	// If you don't some tests will fail accordingly.
+	private static Map<Configuration, String> configurationsValuesToBeAdded() {
+		Map<Configuration, String> configsToValue = new HashMap<>();
+		configsToValue.put(Configuration.INSTITUTION_NAME, STRING_VALID_VALUE);
+		configsToValue.put(Configuration.TASKS_RETRY_INTERVAL, INT_VALID_VALUE);
+		configsToValue.put(Configuration.LOG_LOGIN_FAILS, BOOLEAN_VALID_VALUE);
+		return configsToValue;
+	}
+
+	public static Collection<Configuration> configurationsAdded() {
+		return configurationsValuesToBeAdded().keySet();
 	}
 
 	public static Object[] getAllWithOneKeyMissing() {
